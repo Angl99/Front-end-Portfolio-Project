@@ -9,14 +9,21 @@ function getAnimeById(animeId) {
   axios
     .get(`https://api.jikan.moe/v4/anime/${animeId}/full`)
     .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error("Error during fetch:", error.message);
-    });
+        if (response.status === 200) {
+          return response.data;
+        } else {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error during request:", error.message);
+      });
 }
 
-getAnimeById("28223");
+// getAnimeById("28223");
 
 function getTopAnime() {
   axios
@@ -32,7 +39,7 @@ function getTopAnime() {
       console.log(data);
     })
     .catch((error) => {
-      console.error("Error during fetch:", error.message);
+      console.error("Error during request:", error.message);
     });
 }
 
