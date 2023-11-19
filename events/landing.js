@@ -71,15 +71,6 @@ function createAnimeCards(animeCard) {
   document.querySelector(".anime-list").append(animeContainer);
 }
 
-
-// const searchBar = document.querySelector('.searchBar');
-// const searchButton = document.querySelector('.searchButton');
-// searchButton.addEventListener('click', (event) =>{
-//     // event.preventDefault();
-//     // const result = searchBar.value;
-//     // animeSearch(result);
-// });
-
 getTopAnime('anime');
 
 // limit amount of times search can be clicked -> set timeout and disable

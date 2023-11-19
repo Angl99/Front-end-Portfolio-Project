@@ -57,11 +57,8 @@ function animeSearch(anime) {
 
 
 const queryString = window.location.search;
-console.log(queryString);
-
 const urlParams = new URLSearchParams(queryString);
 const searchResult = urlParams.get('searchInput')
-console.log(searchResult);
 
 animeSearch(searchResult);
 
