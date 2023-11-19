@@ -44,10 +44,11 @@ function animeSearch(anime) {
       return response.json();
     })
     .then((responseData) => {
-        const animeData = responseData.data
-        for (let anime = 0; anime < animeData.length; anime++) {
-          createAnimeCards(animeData[anime]);
-        }
+        console.log(responseData);
+        // const animeData = responseData.data
+        // // for (let anime = 0; anime < animeData.length; anime++) {
+        // //   createAnimeCards(animeData[anime]);
+        // // }
     })
     .catch((error) => {
       console.error("Error during request:", error.message);
@@ -70,10 +71,15 @@ function createAnimeCards(animeCard) {
   document.querySelector(".anime-list").append(animeContainer);
 }
 
-function searchBar() {
-    
-}
 
+// const searchBar = document.querySelector('.searchBar');
+// const searchButton = document.querySelector('.searchButton');
+// searchButton.addEventListener('click', (event) =>{
+//     // event.preventDefault();
+//     // const result = searchBar.value;
+//     // animeSearch(result);
+// });
 
 getTopAnime('anime');
 
+// limit amount of times search can be clicked -> set timeout and disable
