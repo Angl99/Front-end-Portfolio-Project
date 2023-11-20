@@ -27,10 +27,6 @@ function animeSearch(anime) {
     })
     .then((responseData) => {
         console.log(responseData);
-        // const animeData = responseData.data
-        // // for (let anime = 0; anime < animeData.length; anime++) {
-        // //   createAnimeCards(animeData[anime]);
-        // // }
     })
     .catch((error) => {
       console.error("Error during request:", error.message);

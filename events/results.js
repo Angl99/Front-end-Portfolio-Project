@@ -62,11 +62,10 @@ function animeSearch(anime) {
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const searchResult = urlParams.get('searchInput')
+const searchResult = urlParams.get('searchInput');
 
 if (searchResult === "" ) {
-console.log('Your search cannot be empty!!');
+  alert('Your search cannot be empty!!');
 } else {
   animeSearch(searchResult);
-
 }
