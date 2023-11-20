@@ -45,9 +45,13 @@ function animeSearch(anime) {
     })
     .then((responseData) => {
         console.log(responseData);
-        const animeData = responseData.data
+        if (responseData.data.length === 0) {
+          alert("There were no items found, try again.")
+        } else {
+          const animeData = responseData.data
         for (let anime = 0; anime < animeData.length; anime++) {
           createAnimeCards(animeData[anime]);
+        }
         }
     })
     .catch((error) => {
@@ -60,5 +64,9 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const searchResult = urlParams.get('searchInput')
 
-animeSearch(searchResult);
+if (searchResult === "" ) {
+console.log('Your search cannot be empty!!');
+} else {
+  animeSearch(searchResult);
 
+}

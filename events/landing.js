@@ -16,24 +16,6 @@ function getAnimeById(animeId) {
     });
 }
 
-function getTopAnime(search) {
-  fetch(`${apiUrl}top/${search}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.statusText}`);
-      }
-      return response.json();
-    })
-    .then((responseData) => {
-        const animeData = responseData.data
-        for (let anime = 0; anime < animeData.length; anime++) {
-          createAnimeCards(animeData[anime]);
-        }
-    })
-    .catch((error) => {
-      console.error("Error during request:", error.message);
-    });
-}
 
 function animeSearch(anime) {
   fetch(`${apiUrl}anime?q=${anime}&order_by=title&sort=asc`)
@@ -55,22 +37,52 @@ function animeSearch(anime) {
     });
 }
 
-function createAnimeCards(animeCard) {
-  const animeContainer = document.createElement("div");
-  animeContainer.classList.add("anime-card");
+function getTopAnime(search) {
+    fetch(`${apiUrl}top/${search}?limit=5`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+          const animeData = responseData.data
+          for (let anime = 0; anime < animeData.length; anime++) {
+            createAnimeCards(animeData[anime]);
+          }
+      })
+      .catch((error) => {
+        console.error("Error during request:", error.message);
+      });
+  }
+  function createAnimeCards(animeCard) {
 
-  const title = document.createElement("h3");
-  title.textContent = animeCard.title;
-
-  const animeImg = document.createElement("img");
-  animeImg.className = "anime-card-img";
-  animeImg.setAttribute("src", animeCard.images.jpg.image_url);
-
-  animeContainer.append(title, animeImg);
-
-  document.querySelector(".anime-list").append(animeContainer);
-}
+    const carouselItem = document.createElement("div");
+    carouselItem.classList.add("carousel-item");
+  
+    if (document.querySelector(".carousel-inner").childElementCount === 0) {
+      carouselItem.classList.add("active");
+    }
+  
+    const img = document.createElement("img");
+    img.classList.add("d-block", "w-100", "anime-card-img");
+    img.setAttribute("src", animeCard.images.jpg.image_url);
+    img.alt = animeCard.title;
+  
+    const carouselCaption = document.createElement("div");
+    carouselCaption.classList.add("carousel-caption", "d-none", "d-md-block");
+  
+    const title = document.createElement("h5");
+    title.classList.add("card-title");
+    title.textContent = animeCard.title;
+  
+    carouselCaption.appendChild(title);
+    carouselItem.appendChild(img);
+    carouselItem.appendChild(carouselCaption);
+  
+    document.querySelector(".carousel-inner").appendChild(carouselItem);
+  }
+  
+  
 
 getTopAnime('anime');
-
-// limit amount of times search can be clicked -> set timeout and disable
