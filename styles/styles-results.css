@@ -1,10 +1,7 @@
 .anime-list {
-    margin-top: 70px;
-    margin-bottom: 20px;
-    padding: 80px;
+    padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    
-  }
+    grid-gap: 20px;
+   
+}

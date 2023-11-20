@@ -9,7 +9,6 @@
       href="node_modules/bootstrap/dist/css/bootstrap.css"
     />
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <!-- <script src="../events/landing.js" defer></script> -->
     <script src="./events/results.js" defer></script>
     <script
       src="https://kit.fontawesome.com/ac0b1d90bd.js"
@@ -35,9 +34,9 @@
                 Browse
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Anime</a></li>
+                <li><a class="dropdown-item" href="#" value="Anime">Anime</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Manga</a></li>
+                <li><a class="dropdown-item" href="#" value="Manga">Manga</a></li>
               </ul>
             </li>
           </ul>
@@ -50,8 +49,8 @@
     </nav>
 
   <body>
-    <main>
-      <div class="anime-list"></div>
+    <main class="container mt-5">
+      <div class="row anime-list"></div>
     </main>
   </body>
 </html>

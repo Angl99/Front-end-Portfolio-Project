@@ -2,8 +2,10 @@ const apiUrl = `https://api.jikan.moe/v4/`;
 
 function createAnimeCards(animeCard) {
   const animeContainer = document.createElement("div");
-  animeContainer.classList.add("card");
-  animeContainer.style.width = "16rem";
+  animeContainer.classList.add("col-md-2", "mb-4");
+
+  const card = document.createElement("div");
+  card.classList.add("card");
 
   const cardBody = document.createElement("div");
   cardBody.classList.add("card-body");
@@ -18,12 +20,17 @@ function createAnimeCards(animeCard) {
   animeImg.setAttribute("alt", animeCard.title);
 
   cardBody.append(title);
-  animeContainer.append(animeImg, cardBody);
+  card.append(animeImg);
+  card.append(cardBody);
+  animeContainer.append(card);
 
   document.querySelector(".anime-list").append(animeContainer);
+
+  
 }
 
-function getTopAnime(search) {
+
+function getTopSeries(search) {
   fetch(`${apiUrl}top/${search}`)
     .then((response) => {
       if (!response.ok) {
@@ -66,7 +73,6 @@ function animeSearch(anime) {
     });
 }
 
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const searchResult = urlParams.get('searchInput');
@@ -76,3 +82,4 @@ if (searchResult === "" ) {
 } else {
   animeSearch(searchResult);
 }
+
