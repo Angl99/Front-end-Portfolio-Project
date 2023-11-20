@@ -1,4 +1,4 @@
-# AniTrack
+# AniTrack ![](./images/mask.png)
 
 ## Anime Series Viewer
 
@@ -17,9 +17,13 @@ This web application allows users to view information about top anime series and
 
 On Page Load of the landing page, the top anime series is fetched from the Jikan API and displays them in a responsive carousel.
 
+![landing-page](./images/landing.png)
+
 ### 2. Anime Search
 
 This enables users to search for anime titles. It fetches the relevant data from the Jikan API and dynamically creates cards for each result.
+
+![landing-page](./images/results.png)
 
 ### 3. Card Creation
 
