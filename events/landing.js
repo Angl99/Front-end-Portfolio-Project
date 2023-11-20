@@ -79,6 +79,7 @@ function getTopAnime(search) {
     document.querySelector(".carousel-inner").appendChild(carouselItem);
   }
   
-  
 
 getTopAnime('anime');
+
+

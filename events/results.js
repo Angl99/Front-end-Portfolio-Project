@@ -2,16 +2,23 @@ const apiUrl = `https://api.jikan.moe/v4/`;
 
 function createAnimeCards(animeCard) {
   const animeContainer = document.createElement("div");
-  animeContainer.classList.add("anime-card");
+  animeContainer.classList.add("card");
+  animeContainer.style.width = "16rem";
 
-  const title = document.createElement("h3");
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+
+  const title = document.createElement("h5");
+  title.classList.add("card-title");
   title.textContent = animeCard.title;
 
   const animeImg = document.createElement("img");
-  animeImg.className = "anime-card-img";
+  animeImg.classList.add("card-img-top", "anime-card-img");
   animeImg.setAttribute("src", animeCard.images.jpg.image_url);
+  animeImg.setAttribute("alt", animeCard.title);
 
-  animeContainer.append(title, animeImg);
+  cardBody.append(title);
+  animeContainer.append(animeImg, cardBody);
 
   document.querySelector(".anime-list").append(animeContainer);
 }
